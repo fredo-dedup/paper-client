@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import App from './App2.vue'
-import WsConnection from './WsConnection.1.vue'
+import App from './App.vue'
+import WsConnection from './WsConnection.vue'
 import CompTree from './CompTree.vue'
 
 window.bus = new Vue()

@@ -1,7 +1,6 @@
 <template>
 <div>
-  <div v-if="html != ''" v-html="html" v-bind:style="style"></div>
-
+  <div v-if="html != ''" v-html="html" v-bind:style="style"/>
   <div v-for="child in children">
     <comp-tree :html="child.html" :nid="child.nid" :style="child.style"/>
   </div>
@@ -22,7 +21,6 @@ export default {
   },
 
   created: function() {
-
     var thiscomp = this
 
     console.log('node ' + this.nid + ' created')

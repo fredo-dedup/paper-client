@@ -10,7 +10,10 @@ Vue.component('ws-connection', WsConnection)
 
 var rootv = new Vue({
     el: '#app',
-    render: h => h(App)
+    // render: h => h(App)
+    render: function(createElement) {
+      return createElement(App)
+    }
   })
 
 

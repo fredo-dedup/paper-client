@@ -14,7 +14,7 @@ export default {
 
   props: ['html', 'nid', 'style'],
 
-  data () {
+  data: function () {
     return {
       children: []
     }

@@ -5,8 +5,10 @@ export default {
     return {socket: '' } 
   },
   
+  template: '',
+
   mounted: function() {
-    console.log("mounted (2)")
+    console.log("mounted wsconnection")
 
     var socket = new WebSocket('ws://localhost:8081');
 

@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <h1>Paper client</h1>
+    <component :is="headcomp" :msg="'hello'"/>
+    <h3>client</h3>
     <ws-connection/>
-    <comp-tree :html="'root node'" :nid="1" :style=""/>
+    <html-node :params="{html : 'root node'}" :nid="1" :style=""/>
   </div>
 </template>
 
@@ -11,7 +12,7 @@ export default {
   name: 'app',
 
   data: function() {
-    return { }
+    return { headcomp: usercomp['testcomp'] }
   },
 }
 </script>

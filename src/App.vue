@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <component :is="headcomp" :msg="'hello'"/>
     <h3>client</h3>
     <ws-connection/>
     <html-node :params="{html : 'root node'}" :nid="1" :style=""/>

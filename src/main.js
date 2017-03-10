@@ -13,11 +13,15 @@ window.bus = new Vue()
 Vue.component('html-node', HtmlNode)
 Vue.component('ws-connection', WsConnection)
 
-import mycomponent from 'D:/frtestar/.julia/v0.5/Rotolo/client/mc.js'
-// window.testcomp = mycomponent
 window.usercomp = {}
-window.usercomp['testcomp'] = mycomponent
 window.usercomp['html-node'] = HtmlNode
+
+
+// import testcomp from 'D:/frtestar/.julia/v0.5/Rotolo/client/mc.js'
+// window.usercomp['testcomp'] = testcomp
+
+import katexcomp from 'D:/frtestar/.julia/v0.5/Rotolo/client/katex.js'
+window.usercomp['katex'] = katexcomp
 
 var rootv = new Vue({
     el: '#app',

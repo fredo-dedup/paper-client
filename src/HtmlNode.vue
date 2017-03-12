@@ -27,9 +27,6 @@ export default {
     bus.$on('event-' + this.nid, 
              function(msg) {
                console.log('node received : command ' + msg.command);
-               //console.log('node received ' + msg.payload.nid);
-               //console.log('node received ' + msg.payload.html);
-               //console.log('node received ' + msg.payload.style);
                switch(msg.command) {
                  case 'append':
                    console.log('added node ' + msg.payload.nid + 
@@ -39,6 +36,15 @@ export default {
                                            params : msg.payload.params,
                                            style : msg.payload.style});
                    break;
+                 case 'clear':
+                   console.log('clearing node ' + thiscomp.nid)
+                   thiscomp.children = []
+                   break;
+                 case 'splice':
+                   console.log('splicing node ' + thiscomp.nid)
+                   thiscomp.children = []
+                   break;
+
                }  
              });  
   }

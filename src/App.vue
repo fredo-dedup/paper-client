@@ -48,7 +48,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #203e50;
-  margin-top: 60px;
 }
 
 h1, h2 {

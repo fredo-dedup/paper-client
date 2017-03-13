@@ -1,5 +1,5 @@
 <template>
-<div></div>
+  <div>{{socketName}}</div>
 </template>
 
 <script>
@@ -7,14 +7,16 @@ export default {
   name: 'ws-connection',
   
   data: function () { 
-    return {socket: '' } 
+    return {socketName: '' } 
   },
 
-  mounted: function() {
-    console.log("mounted wsconnection")
+  created: function() {
+    console.log("mounted ws connection")
 
-    var socket = new WebSocket('ws://localhost:' + serverPort);
-    console.log('listening on : ' +  'ws://localhost:' + serverPort);
+    this.socketName = 'ws://localhost:' + serverPort
+
+    var socket = new WebSocket(this.socketName);
+    console.log('listening on : ' +  this.socketName);
 
     socket.onopen = function() {
       socket.onmessage = function(response) {
@@ -38,6 +40,8 @@ export default {
     this.socket = socket
   },
 
-  destroyed: function() { this.socket.close() },
+  destroyed: function() { this.socket.close() }
 
 }
+
+</script>

@@ -33,7 +33,7 @@ export default {
                    console.log('added node ' + msg.newnid + 
                                ' to node ' + thiscomp.nid)
                    thiscomp.children.push({nid : msg.newnid,
-                                           comp : usercomp[msg.compname],
+                                           comp : usercomp[msg.params.compname],
                                            params : msg.params,
                                            style : msg.style});
                    break;

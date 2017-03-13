@@ -24,5 +24,3 @@ var rootv = new Vue({
     }
   })
 
-
-

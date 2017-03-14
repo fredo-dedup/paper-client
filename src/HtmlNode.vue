@@ -27,15 +27,20 @@ export default {
 
     bus.$on('event-' + this.nid, 
              function(msg) {
-               console.log('node received : command ' + msg.command);
+               console.log('node ' + thiscomp.nid + 
+                           ' received command ' + msg.command);
+               
+               var args = msg.args
+               
                switch(msg.command) {
                  case 'append':
-                   console.log('added node ' + msg.newnid + 
+                   console.log('added node ' + args.newnid + 
                                ' to node ' + thiscomp.nid)
-                   thiscomp.children.push({nid : msg.newnid,
-                                           comp : usercomp[msg.params.compname],
-                                           params : msg.params,
-                                           style : msg.style});
+
+                   thiscomp.children.push({nid:    args.newnid,
+                                           comp:   usercomp[args.compname],
+                                           params: args.params,
+                                           style:  args.style });
                    break;
 
                  case 'clear':
@@ -45,7 +50,6 @@ export default {
                    
                  case 'splice':
                    console.log('splicing node ' + thiscomp.nid)
-                   thiscomp.children = []
                    break;
 
                }  

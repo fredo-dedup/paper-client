@@ -20,8 +20,10 @@ export default {
     }
   },
 
-  created: function() {
+  mounted: function() {
     var thiscomp = this
+
+    this.$el.scrollIntoView();
 
     console.log('node ' + this.nid + ' created')
 

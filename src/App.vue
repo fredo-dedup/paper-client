@@ -1,12 +1,13 @@
 <template>
   <div id="app">
-    <h3>client</h3>
-    <ws-connection/>
-    <html-node :params="{html : 'root node'}" :nid="1" :style=""/>
+    <ws-connection style="font-style: italic;text-align: right;font-size: x-small;"/>
+    <html-node :params="{}" :nid="1" :style=""/>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+
 export default {
   name: 'app',
 
@@ -25,8 +26,33 @@ export default {
 
               switch(msg.command) {
                 case 'load':
-                  console.log('loading asset ' + msg.assetname + 
-                              ' in ' + msg.assetpath)
+                  var args = msg.args
+                  
+                  console.log('loading asset ' + args.assetname + 
+                              ' in ' + args.assetpath)
+
+                  usercomp[args.assetname] = 
+                    Vue.component(args.assetname,
+                                  function (resolve) {
+                                  require([args.assetpath], resolve) }
+                                  )
+
+                  // var newcomp = function(resolve) {
+                  //   require.ensure([args.assetpath], 
+                  //                  function() {
+                  //                     resolve(require(args.assetpath))
+                  //                  })
+                  // }
+
+                  // usercomp[args.assetname] = newcomp
+
+                  // usercomp[args.assetname] = function(resolve) {
+                  //  require.ensure([], 
+                  //               function() {
+                  //                     resolve(require(args.assetpath))
+                  //                  }, '') } ;
+
+                  // usercomp[args.assetname] = require(args.assetpath) ;
 
                   // import newcomp from msg.assetpath
                   // usercomp[msg.assetname] = newcomp

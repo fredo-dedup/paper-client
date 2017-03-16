@@ -1,18 +1,22 @@
 <template>
-<div></div>
+  <div>{{socketName}}</div>
 </template>
 
 <script>
 export default {
+  name: 'ws-connection',
   
   data: function () { 
-    return {socket: '' } 
+    return {socketName: '' } 
   },
 
-  mounted: function() {
-    console.log("mounted wsconnection")
+  created: function() {
+    console.log("mounted ws connection")
 
-    var socket = new WebSocket('ws://localhost:8081');
+    this.socketName = 'ws://localhost:' + serverPort
+
+    var socket = new WebSocket(this.socketName);
+    console.log('listening on : ' +  this.socketName);
 
     socket.onopen = function() {
       socket.onmessage = function(response) {
@@ -20,7 +24,6 @@ export default {
 
         console.log("wssocket: id = " + msg.nid);
         console.log("wssocket: command = " + msg.command);
-        console.log("wssocket: payload = " + msg.payload);
         
         bus.$emit('event-' + msg.nid, msg);
       };
@@ -37,6 +40,8 @@ export default {
     this.socket = socket
   },
 
-  destroyed: function() { this.socket.close() },
+  destroyed: function() { this.socket.close() }
 
 }
+
+</script>

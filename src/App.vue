@@ -13,6 +13,32 @@ export default {
   data: function() {
     return { headcomp: usercomp['testcomp'] }
   },
+
+  // suscribe to 'event-0' events
+  created: function() {
+    var thiscomp = this
+
+    bus.$on('event-0', 
+            function(msg) {
+
+              console.log('event-0 : command ' + msg.command);
+
+              switch(msg.command) {
+                case 'load':
+                  console.log('loading asset ' + msg.assetname + 
+                              ' in ' + msg.assetpath)
+
+                  // import newcomp from msg.assetpath
+                  // usercomp[msg.assetname] = newcomp
+                  // require(msg.assetpath, function(newcomp) {
+                  //  usercomp[msg.assetname] = newcomp
+                  // }) ;
+            
+                  break;
+
+              }  
+            })
+  }        
 }
 </script>
 
@@ -21,9 +47,7 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #203e50;
-  margin-top: 60px;
 }
 
 h1, h2 {

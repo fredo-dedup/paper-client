@@ -28,37 +28,14 @@ export default {
                 case 'load':
                   var args = msg.args
                   
-                  console.log('loading asset ' + args.assetname + 
+                  console.log('loading asset ' + args.assetname +
                               ' in ' + args.assetpath)
 
-                  usercomp[args.assetname] = 
-                    Vue.component(args.assetname,
-                                  function (resolve) {
-                                  require([args.assetpath], resolve) }
-                                  )
-
-                  // var newcomp = function(resolve) {
-                  //   require.ensure([args.assetpath], 
-                  //                  function() {
-                  //                     resolve(require(args.assetpath))
-                  //                  })
-                  // }
-
-                  // usercomp[args.assetname] = newcomp
-
-                  // usercomp[args.assetname] = function(resolve) {
-                  //  require.ensure([], 
-                  //               function() {
-                  //                     resolve(require(args.assetpath))
-                  //                  }, '') } ;
-
-                  // usercomp[args.assetname] = require(args.assetpath) ;
-
-                  // import newcomp from msg.assetpath
-                  // usercomp[msg.assetname] = newcomp
-                  // require(msg.assetpath, function(newcomp) {
-                  //  usercomp[msg.assetname] = newcomp
-                  // }) ;
+                  requirejs([args.assetpath], function(util) {
+                    console.log('new comp = ' + util);
+                    usercomp[args.assetname] = 
+                      Vue.component(args.assetname, util)
+                  });
             
                   break;
 

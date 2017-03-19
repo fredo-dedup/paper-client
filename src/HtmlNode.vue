@@ -42,7 +42,7 @@ export default {
                                ' to node ' + thiscomp.nid)
 
                    thiscomp.children.push({nid:    args.newnid,
-                                           comp:   usercomp[args.compname],
+                                           comp:   Vue.component(args.compname), // usercomp[args.compname],
                                            params: args.params,
                                            style:  args.style });
                    break;
@@ -50,10 +50,6 @@ export default {
                  case 'clear':
                    console.log('clearing node ' + thiscomp.nid)
                    thiscomp.children = []
-                   break;
-                   
-                 case 'splice':
-                   console.log('splicing node ' + thiscomp.nid)
                    break;
 
                }  

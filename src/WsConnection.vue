@@ -22,8 +22,8 @@ export default {
       socket.onmessage = function(response) {
         var msg = JSON.parse(response.data);
 
-        console.log("wssocket: id = " + msg.nid);
-        console.log("wssocket: command = " + msg.command);
+        console.log("wssocket msg : nid = " + msg.nid +
+                    " command = " + msg.command);
         
         bus.$emit('event-' + msg.nid, msg);
       };

@@ -7,6 +7,8 @@
 
 <script>
 import Vue from 'vue'
+import text from 'text'
+// requirejs(['require-text'], function(req) {})
 
 export default {
   name: 'app',
@@ -33,8 +35,8 @@ export default {
 
                   requirejs([args.assetpath], function(util) {
                     console.log('new comp = ' + util);
-                    usercomp[args.assetname] = 
-                      Vue.component(args.assetname, util)
+                    // usercomp[args.assetname] = util;
+                    Vue.component(args.assetname, util)
                   });
             
                   break;

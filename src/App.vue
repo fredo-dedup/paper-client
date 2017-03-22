@@ -7,7 +7,7 @@
 
 <script>
 import Vue from 'vue'
-import text from 'text'
+// import text from 'text'
 // requirejs(['require-text'], function(req) {})
 
 export default {

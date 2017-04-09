@@ -7,7 +7,6 @@
 
 <script>
 import Vue from 'vue'
-import text from 'text'
 
 export default {
   name: 'app',

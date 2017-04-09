@@ -1,11 +1,13 @@
 <template>
-<div>
-  <div v-html="params.html"/>
-  <component v-for="child in children" :is="child.comp" 
-       :params="child.params" :nid="child.nid" :style="child.style"/>
-  </div>
+<div :style="mystyle" :class="myclass" :id="myid" >
+  {{ params.html }}
+  <component v-for="child in children"  
+             :is="child.comp" 
+             :nid="child.nid"
+             :params="child.params" 
+             :deco="child.deco"
+             />
 </div>
-
 </template>
 
 <script>
@@ -14,11 +16,14 @@ import Vue from 'vue'
 export default {
   name: 'html-node',
 
-  props: ['params', 'nid'],
+  props: ['nid', 'deco', 'params'],
 
   data: function () {
     return {
-      children: []
+      children: [],          //sub containers
+      mystyle:  this.deco.style,  //local var to allow changes
+      myclass:  this.deco.class,
+      myid:     this.deco.id
     }
   },
 
@@ -42,14 +47,17 @@ export default {
                                ' to node ' + thiscomp.nid)
 
                    thiscomp.children.push({nid:    args.newnid,
-                                           comp:   Vue.component(args.compname), // usercomp[args.compname],
+                                           comp:   Vue.component(args.compname), 
                                            params: args.params,
-                                           style:  args.style });
+                                           deco:   args.deco });
                    break;
 
                  case 'clear':
                    console.log('clearing node ' + thiscomp.nid)
-                   thiscomp.children = []
+                   thiscomp.children = [];
+                   thiscomp.mystyle = msg.args.deco.style;
+                   thiscomp.myclass = msg.args.deco.class;
+                   thiscomp.myid    = msg.args.deco.id;
                    break;
 
                }  

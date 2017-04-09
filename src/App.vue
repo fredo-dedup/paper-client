@@ -1,14 +1,13 @@
 <template>
   <div id="app">
     <ws-connection style="font-style: italic;text-align: right;font-size: x-small;"/>
-    <html-node :params="{}" :nid="1" :style=""/>
+    <html-node :params="{}" :deco="{}" :nid="1" />
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import text from 'text'
-// requirejs(['require-text'], function(req) {})
 
 export default {
   name: 'app',

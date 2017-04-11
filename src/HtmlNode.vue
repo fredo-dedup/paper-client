@@ -1,6 +1,6 @@
 <template>
 <div :style="mystyle" :class="myclass" :id="myid" >
-  {{ params.html }}
+  <span v-html="params.html"/>
   <component v-for="child in children"  
              :is="child.comp" 
              :nid="child.nid"
